@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a=Number("abc");
+		//alert(a);
+		//alert(typeof(a));
+		// if (a) {
+		// 	alert("NaN是真");
+		// }
+		// else{
+		// 	alert("NaN是假");
+		// }
+		// alert(Boolean(a));
+
+		//比较
+		alert(2=="2");		//true    ==只会比较数值
+		alert(0==false);	//true    ===不仅比较数值，还会比较类型
+		alert(2==="2");		//false
+		alert(a==a);		//false    NaN连自己都不相等
+		alert(a===a);		//false    NaN连自己都不相等
+		document.write(null=="null");		//false   字符串里的null是有值的，所以==比较值时是不相等的
+		document.write(null==undefined);		//true
+
+
+
+		//NaN的衍生方法  is not a number   是不是  不是一个数字的数字类型
+		//说白了，就是判断你是不是NaN     ->   是不是一个数字
+		//是NaN则不是数字，不是NaN则是数字，反之也同样
+		alert(isNaN(123));	//false  123是一个数字，所以不是NaN
+		alert(isNaN("abc"));	//true   此时会把abc转换为数字类型，再判断
+
+
+
+
+	</script>
+</body>
+</html>
