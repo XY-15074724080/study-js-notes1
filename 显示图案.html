@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		
+		var arr=['*','##',"***","&&","****","##*"];
+		arr[7]="**";
+		//目的：使显示*
+		//			  **
+		//			  ***
+		//			  ****的图案
+
+
+		//删除有其他符号的值
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]!=undefined){//使不循环arr数组内的undefined，否则会报错
+				var newarr=arr[i].split("");//声明一个新的数组newarr，把arr数组的每个值以逗号拆分成数组(双引号里没有值则默认是逗号)，并把所有赋给newarr
+
+				for(var j=0;j<newarr.length;j++){
+					if(newarr[j]!="*"){//删除不是*的所有值
+						delete arr[i];//只删除索引里的值，删除后索引里为undefined
+					}
+				}
+			}
+		}
+		arr.sort();//排序
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]!=undefined){//如果不是undefined，才输出
+			document.write(arr[i]+"<br/>");
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>
