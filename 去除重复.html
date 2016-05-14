@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数组_去除重复</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=new Array(1,2,3,'4','3',5,2,5);
+
+		arr.sort();		//排序，保证arr的顺序
+		var x=[arr[0]];  //   ->  x=[1]
+		for(var i=0;i<arr.length;i++){
+			//如果arr里面有，而x里面没有，则添加到x里面去
+			if(arr[i] != x[x.length-1]){
+				//没有，则添加进去
+				x.push(arr[i]);
+			}
+		}
+		console.log(x);
+
+
+
+		//第二种方法
+		var x=[];
+		for(var i=0;i<arr.length;i++){
+			//在x数组里面循环地找arr数组里面的值，如果没有，则添加进去
+			//indexOf()寻找值的索引
+			if(x.indexOf(arr[i])=-1){
+				x.push(arr[i]);
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>
