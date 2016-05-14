@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//1_为什么使用函数
+		var x=10;
+		var y=10;
+		document.write(x+y+"<br/>");
+
+		//需更改时
+		x=100;
+		y=1000;
+		document.write(x+y+"<br/>");//此时代码冗余
+
+		//定义成一个函数 function/方法 method   =>   功能
+		function add(x,y){//此函数做输出功能
+			return x+y;
+		}
+		document.write(add(1,2)+"<br/>" );//只需更改括号内的数值
+
+
+
+
+
+
+		//2_为什么使用函数
+		//第一班的学生信息
+		var classes1=[{//对象之间，用逗号隔开
+			name:'smith',
+			age:20,
+			gender:1//1表示男
+		},{
+			name:'tom',
+			age:19,
+			gender:0//0表示女
+		},{
+			name:'john',
+			age:21,
+			gender:1
+		}]
+
+		//第二班的学生信息
+		var classes2=[{
+			name:'rose',
+			age:20,
+			gender:1
+		},{
+			name:'jack',
+			age:23,
+			gender:0
+		},{
+			name:'john',
+			age:24,
+			gender:1
+		}]
+		//定义一个函数来求平均年龄
+		function getAverageAge( arr ){
+			//求平均年龄
+			var avgAge=0;//声明一个平均年龄，初始值为0
+			var length=arr.length;//声明一个长度 为数组长度
+			var sum=0;//声明一个年龄总和，初始值为0
+			for(var i=0;i<length;i++){
+				var stu=arr[i];//从数组中取出的每一个元素是一个对象
+				sum=sum+stu.age;//从每个对象中取出年龄     变量名.属性名
+			}
+			avgAge=sum/length;//数组长度即为对象数量
+			return avgAge;  //函数一般有返回值，方便之后用户随心调用
+		}
+		document.write("一班的平均年龄："+getAverageAge(classes1) +"<br/>");
+		document.write("二班的平均年龄："+getAverageAge(classes2) +"<br/>");
+
+		//求出每一个班的男女比例
+		function getRatio(arr ){
+			var female=0,male=0;
+			var length=arr.length;
+			var r;//声明一个比率r
+			for(var i=0;i<length;i++){
+				var a=arr[i];//把arr的值一个个取出来给a
+				if(a.gender==1){//如果此对象的性别为男，则男生人数加1
+					male++;
+				}else{//如果此对象的性别为女，则女生人数加1
+					female++;
+				}
+			}
+			r=male/female;
+			return r;
+		}
+
+		document.write("一班的男女比例："+getRatio( classes1) +"<br/>");
+		document.write("二班的男女比例："+getRatio(classes2)+"<br/>");
+		//小结：使用函数的优点：1、功能整合
+		//						2、便于修改
+		//						3、高内聚，低耦合（重要点）
+		//高内聚 => 功能内聚 => 一个函数只做一个功能
+		//低耦合：函数与函数之间低耦合  ？？？
+
+
+
+
+
+
+
+		//3_函数的声明方式_匿名函数
+		//匿名函数：因为它没有名字
+		//add2是一个变量名
+		//将一段匿名函数的代码赋值给了 add2 变量
+		var add2=function(x,y){
+			return x+y;
+		}
+		document.write(add2+"<br/>");//此时显示的是一段代码
+
+		//也可在变量名后面加上一个  ()  来调用这个函数
+		document.write( add2(2,4)+"<br/>" );// => 6
+
+
+
+
+
+
+		//4_实参的数量与形参不同的问题
+		function add3(x,y,z){
+			return x+y+z;
+		}
+
+		//实参比形参少
+		document.write(add3(1,2)+"<br/>");// => NaN
+		//实参比形参数多,会丢弃多余的
+		document.write(add3(1,2,3,4)+"<br/>");
+
+		//不定参： 在函数中有一个隐含的变量 arguments =>数组，它里面有传过来的所有的实参的值
+		//arguments是浏览器给予的，所有浏览器都有
+		function add4(){
+			var sum=0;
+			for(var i=0;i<arguments.length;i++){
+				sum+=arguments[i];
+			}
+			return sum;
+		}
+
+		document.write(add4(1,2,3,4,5,6,7 )+"<br/>");
+
+
+
+
+
+		//5_参数的值_基本类型_值传递
+		//如果实参传递的是基本类型数据，则传递方式为值传递（复制当前的值）
+		function increment(number){
+			number=number+1;
+			return number;
+		}
+		var a=1;
+		var x=increment(a);//值传递（赋值当前的值再传递），调用函数后其本来的值a不变
+
+		document.write( a+"<br/>" );//1
+		document.write( x+"<br/>" );//2
+
+
+
+
+
+		//6_参数的值_引用类型_引用传递
+		function increment2( p ){
+			p.age=p.age+1;
+			return p;
+		}
+
+		var person={name:'smith',age:20};
+		increment2(person);//引用传递，传递的值对象的地址，所以调用函数后其所在地址的对象会发生改变
+
+		document.write(person.name+" "+person.age+"<br/>");//'smith' 21
+
+
+
+
+
+	</script>
+</body>
+</html>
