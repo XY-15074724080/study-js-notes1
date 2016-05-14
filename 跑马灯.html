@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//跑马灯
+		 var str="* * * 欢 迎 进 入 * * * ";
+		 var arr=str.split(" ");//split()  通过某个字符（此处是空格），把字符串拆分成一个数组
+
+		function run(){
+			//  *	 ("*","*","欢","迎","进","入","*","*","*")
+			var s=arr.shift();//删除arr数组最前面的*， 并把它赋给s
+
+			//("*","*","欢","迎","进","入","*","*","*","*")
+			arr.push(s);//把s的值* 添加到数组arr的最后
+
+			//join()：  连接 通过某个字符，把所有数组成员连接成一个字符串
+			document.title=arr.join(" ");//网页标题设置
+		}
+		window.setInterval("run()", 300);//每0.3秒执行一次方法
+	</script>
+</body>
+</html>
