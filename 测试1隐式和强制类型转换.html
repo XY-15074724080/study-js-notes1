@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//NaN:not a number 不是一个数字的数字类型
+		//这是隐式类型转换
+		var j="123abc";
+		alert(typeof(j++)); //number
+		alert(j);  //NaN
+		var i="abc";
+		//i++;	 //NaN
+		//++i;	 //NaN
+		i=i+1;  //abc1  ->强制类型转换   转换成了字符串类型
+		alert(i);
+		//alert(typeof(i));
+		
+
+
+
+		//number强制类型转换
+		var a="100";
+		//alert(typeof(Number(a)));//强制类型转换	非常明确最终是要转换成什么类型
+		var a="-100";
+		//alert(Number(a));	
+		//alert(typeof(Number(a)));
+		//var b="     ";		//0
+		//alert(Number(b));		
+		// var b="";		//0
+		// alert(Number(b));
+		// var b=true;		//1
+		// alert(Number(b));
+		// var b=false;		//0
+		// alert(Number(b));
+		// var b=null;		//0
+		// alert(Number(b));
+		// var b="123abc";		//NaN
+		// alert(Number(b));
+		//var c;				//NaN
+		//alert(Number(c));
+		// var b="abc123";
+		// alert(Number(b));		//NaN
+
+
+
+
+		//上面的number是整体转换，而parseInt和parseFloat是精确转换的
+		i="123";
+		//alert(typeof(parseInt(i)));
+		//alert(parseFloat(i));		//123
+		i="123.456";
+		//alert((parseInt(i)));		//123
+		//alert(parseFloat(i));		//123.456
+		i="";
+		//alert((parseInt(i)));		//NaN
+		i="123a456";	//如果前面有数字，后面是字符串，那么，返回前面的数字
+		//alert((parseInt(i)));		//123
+		i="a123456";	//如果前面没有数字，直接返回NaN
+		//alert((parseInt(i)));		//NaN
+
+		i=true;
+		//alert((parseInt(i)));		//NaN
+		//alert((parseFloat(i)));		//NaN
+		
+
+
+
+		//Boolean强制类型转换中：只有0、null、空的字符串，才会返回false，其余的，都会返回true
+		i=Boolean("");
+		document.write(i+"<br/>");//false
+		i=Boolean("hello");
+		document.write(i+"<br/>");//true
+		i=Boolean(50);
+		document.write(i+"<br/>");//true
+		i=Boolean(null);
+		document.write(i+"<br/>");//false
+		i=Boolean(0);
+		document.write(i+"<br/>");//false
+		i=Boolean(-5);
+		document.write(i+"<br/>");//true
+
+
+
+		//String强制类型转换
+		a=String(123);
+		document.write(a+"<br/>");	//"123"
+		a=String(0x22);
+		document.write(a+"<br/>");	//"34"
+		a=String(null);
+		document.write(a+"<br/>");	//"null"
+		a=String(true);
+		document.write(a+"<br/>");	//"true"
+		a=String(false);
+		document.write(a+"<br/>");	//"false"
+		var b;
+		var c=String(b);
+		//document.write(c+"<br/>");	//"undefined"
+		//String强制类型转换，不分国际，都会加上双引号
+		//String强制类型转换，转换的对象（二进制、八进制等）会自动转化为十进制的数
+
+		//toString();	精确转换，只要为空或未定义，都会报错,其余的和String一模一样
+		var i=null;
+		//document.write(i.toString()+"<br/>");	//报错
+		var j;
+		//document.write(j.toString()+"<br/>");	//报错
+		var k=10;
+		//document.write(k.toString(16)+"<br/>");	//1010	    12      a
+										     	//字符串	//8进制	   //16进制
+		var k=true;
+		//alert(k.toString());		//"true"
+	</script>
+</body>
+</html>
